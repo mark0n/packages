@@ -243,19 +243,19 @@ write_log() {
 	shift	# remove loglevel
 	[ $__EXIT -eq 0 ] && __MSG="$*" || __MSG="$* - TERMINATE"
 	case $__LEVEL in		# create log message and command depending on loglevel
-		0)	__CMD="logger -p user.emerg -t ddns-scripts[$$] $SECTION_ID: $__MSG"
+		0)	__CMD="/usr/bin/logger -p user.emerg -t ddns-scripts[$$] $SECTION_ID: $__MSG"
 			__MSG=" $__TIME EMERG : $__MSG" ;;
-		1)	__CMD="logger -p user.alert -t ddns-scripts[$$] $SECTION_ID: $__MSG"
+		1)	__CMD="/usr/bin/logger -p user.alert -t ddns-scripts[$$] $SECTION_ID: $__MSG"
 			__MSG=" $__TIME ALERT : $__MSG" ;;
-		2)	__CMD="logger -p user.crit -t ddns-scripts[$$] $SECTION_ID: $__MSG"
+		2)	__CMD="/usr/bin/logger -p user.crit -t ddns-scripts[$$] $SECTION_ID: $__MSG"
 			__MSG=" $__TIME  CRIT : $__MSG" ;;
-		3)	__CMD="logger -p user.err -t ddns-scripts[$$] $SECTION_ID: $__MSG"
+		3)	__CMD="/usr/bin/logger -p user.err -t ddns-scripts[$$] $SECTION_ID: $__MSG"
 			__MSG=" $__TIME ERROR : $__MSG" ;;
-		4)	__CMD="logger -p user.warn -t ddns-scripts[$$] $SECTION_ID: $__MSG"
+		4)	__CMD="/usr/bin/logger -p user.warn -t ddns-scripts[$$] $SECTION_ID: $__MSG"
 			__MSG=" $__TIME  WARN : $__MSG" ;;
-		5)	__CMD="logger -p user.notice -t ddns-scripts[$$] $SECTION_ID: $__MSG"
+		5)	__CMD="/usr/bin/logger -p user.notice -t ddns-scripts[$$] $SECTION_ID: $__MSG"
 			__MSG=" $__TIME  note : $__MSG" ;;
-		6)	__CMD="logger -p user.info -t ddns-scripts[$$] $SECTION_ID: $__MSG"
+		6)	__CMD="/usr/bin/logger -p user.info -t ddns-scripts[$$] $SECTION_ID: $__MSG"
 			__MSG=" $__TIME  info : $__MSG" ;;
 		7)	__MSG=" $__TIME       : $__MSG";;
 		*) 	return;;
